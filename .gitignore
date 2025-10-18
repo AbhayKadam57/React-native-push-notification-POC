@@ -35,6 +35,29 @@ local.properties
 !debug.keystore
 .kotlin/
 
+# 🔥 FIREBASE & SENSITIVE FILES 🔥
+# Google Services configuration files (CONTAINS API KEYS!)
+google-services.json
+GoogleService-Info.plist
+# Firebase config files
+firebase.json
+.firebaserc
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+# API keys and secrets
+secrets.json
+config/secrets/
+# Any file containing keys or tokens
+**/keys/
+**/*key*.json
+**/*secret*.json
+**/*config*.json
+# Exclude but allow debug keystore
+!android/app/debug.keystore
+
 # node.js
 #
 node_modules/
