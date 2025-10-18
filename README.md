@@ -1,97 +1,241 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🔔 React Native Push Notification POC
 
-# Getting Started
+A proof-of-concept React Native application demonstrating Firebase Cloud Messaging (FCM) integration with Notifee for local and remote push notifications.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 📱 Features
 
-## Step 1: Start Metro
+- ✅ Firebase Cloud Messaging (FCM) integration
+- ✅ Local notifications using Notifee
+- ✅ Foreground and background message handling
+- ✅ Android notification channels
+- ✅ Permission management
+- ✅ Test notification functionality
+- ✅ Cross-platform support (Android/iOS)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🚀 Getting Started
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Prerequisites
 
-```sh
-# Using npm
-npm start
+- Node.js (v16 or higher)
+- React Native CLI
+- Android Studio (for Android development)
+- Xcode (for iOS development - macOS only)
+- Firebase project with FCM enabled
 
-# OR using Yarn
-yarn start
-```
+### Installation
 
-## Step 2: Build and run your app
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AbhayKadam57/React-native-push-notification-POC.git
+   cd React-native-push-notification-POC
+   ```
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### Android
+3. **iOS Setup (if developing for iOS)**
+   ```bash
+   cd ios && pod install && cd ..
+   ```
 
-```sh
-# Using npm
+## 🔥 Firebase Configuration
+
+### 1. Create Firebase Project
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a new project or use existing one
+3. Enable Cloud Messaging
+
+### 2. Android Configuration
+1. In Firebase Console, add an Android app
+2. Use package name: `com.abhay.pushdemo` (or update accordingly)
+3. Download `google-services.json`
+4. Place it in `android/app/google-services.json`
+
+### 3. iOS Configuration (Optional)
+1. In Firebase Console, add an iOS app
+2. Use bundle ID matching your iOS project
+3. Download `GoogleService-Info.plist`
+4. Add it to your iOS project in Xcode
+
+## 🛠️ Development Setup
+
+### Running the App
+
+**Android:**
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+**iOS:**
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+**Start Metro Bundler:**
+```bash
+npm start
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Testing Notifications
 
-## Step 3: Modify your app
+1. **Local Test**: Use the "Send Test Notification" button in the app
+2. **Remote Test**: Send notifications from Firebase Console or your server
 
-Now that you have successfully run the app, let's make changes!
+## 📦 Dependencies
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Core Dependencies
+- `@react-native-firebase/app` - Firebase core functionality
+- `@react-native-firebase/messaging` - Firebase Cloud Messaging
+- `@notifee/react-native` - Local notification management
+- `react-native-safe-area-context` - Safe area handling
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### Development Dependencies
+- `@react-native/metro-config` - Metro bundler configuration
+- `@types/react` - TypeScript definitions
+- `eslint` - Code linting
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## 🔧 Configuration Files
 
-## Congratulations! :tada:
+### Important Files
+- `android/app/google-services.json` - Firebase Android configuration ⚠️ **Not in repo**
+- `ios/GoogleService-Info.plist` - Firebase iOS configuration ⚠️ **Not in repo**
+- `android/app/build.gradle` - Android build configuration
+- `package.json` - Dependencies and scripts
 
-You've successfully run and modified your React Native App. :partying_face:
+## 🔐 Security Notice
 
-### Now what?
+**⚠️ IMPORTANT:** The following files contain sensitive information and are excluded from the repository:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- `google-services.json`
+- `GoogleService-Info.plist`
+- `.env` files
+- Any files containing API keys or secrets
 
-# Troubleshooting
+**For team members:** You must obtain your own Firebase configuration files and place them in the correct locations.
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## 📱 App Structure
 
-# Learn More
+```
+src/
+├── App.tsx                 # Main application component
+├── index.js               # App entry point
+└── components/            # Reusable components (future)
 
-To learn more about React Native, take a look at the following resources:
+android/
+├── app/
+│   ├── google-services.json  # Firebase config (not in repo)
+│   └── build.gradle          # Android build config
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+ios/
+├── AwesomeProject/
+│   └── GoogleService-Info.plist  # Firebase config (not in repo)
+```
+
+## 🔔 Notification Flow
+
+### 1. App Initialization
+- Creates notification channel
+- Requests Firebase and Notifee permissions
+- Gets FCM token for device identification
+
+### 2. Foreground Notifications
+- Listens for incoming FCM messages
+- Displays notifications using Notifee
+- Handles user interactions
+
+### 3. Background Notifications
+- Processes messages when app is not active
+- Shows system notifications
+- Maintains notification history
+
+## 🧪 Testing Guide
+
+### Local Notifications
+1. Open the app
+2. Tap "Send Test Notification" button
+3. Verify notification appears
+
+### Remote Notifications
+1. Get FCM token from app logs
+2. Use Firebase Console > Cloud Messaging
+3. Send test message to the token
+4. Verify notification appears both in foreground and background
+
+### Permission Testing
+1. Fresh install the app
+2. Grant notification permissions when prompted
+3. Check console logs for permission status
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Notifications not showing:**
+- Check notification permissions in device settings
+- Verify `google-services.json` is correctly placed
+- Check console logs for errors
+- Ensure notification channels are created
+
+**Build errors:**
+- Clean and rebuild: `cd android && ./gradlew clean && cd ..`
+- Check package name matches Firebase configuration
+- Verify all dependencies are installed
+
+**Token not generating:**
+- Check internet connection
+- Verify Firebase project configuration
+- Check Google Services plugin in build.gradle
+
+### Debug Commands
+```bash
+# Check device logs (Android)
+adb logcat | grep -E "(notifee|firebase|FCM)"
+
+# Clear app data
+adb shell pm clear com.abhay.pushdemo
+
+# Reset Metro cache
+npx react-native start --reset-cache
+```
+
+## 📊 Testing Checklist
+
+- [ ] App builds successfully on Android
+- [ ] App builds successfully on iOS (if applicable)
+- [ ] Local test notification works
+- [ ] Firebase permissions granted
+- [ ] FCM token generated
+- [ ] Foreground notifications display
+- [ ] Background notifications display
+- [ ] Notification tap handling works
+- [ ] App doesn't crash on notification events
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/new-feature`
+3. Commit changes: `git commit -am 'Add new feature'`
+4. Push to branch: `git push origin feature/new-feature`
+5. Submit a pull request
+
+## 📄 License
+
+This project is for educational/POC purposes. Feel free to use and modify as needed.
+
+## 👤 Author
+
+**Abhay Kadam**
+- GitHub: [@AbhayKadam57](https://github.com/AbhayKadam57)
+
+## 🙏 Acknowledgments
+
+- React Native team for the excellent framework
+- Firebase team for FCM services
+- Notifee team for local notification management
+- Open source community for invaluable resources
+
+---
+
+**⭐ Star this repo if it helped you!**
